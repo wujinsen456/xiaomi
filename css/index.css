@@ -396,7 +396,7 @@ main{
 }
 .icon-liwu {
     font-size: 26px;
-    color: #d2c9c2;
+    color: #f6f6f6;
 }
 .icon-Fma {
     font-size: 26px;
@@ -428,6 +428,9 @@ main{
     margin-right: 14px;
 }
 .boxDown_left li:first-child:hover, .boxDown_left li:nth-child(2):hover,.boxDown_left li:nth-child(3):hover,.boxDown_left li:nth-child(4):hover,.boxDown_left li:nth-child(5):hover,.boxDown_left li:last-child:hover{
+    color: #ffffff;
+}
+.mifan:hover,.old:hover{
     color: #ffffff;
 }
 .boxDown_left li:hover .icon-xuangoushouji1,.boxDown_left li:hover .icon-liwu ,.boxDown_left li:hover .icon-Fma,.boxDown_left li:hover .icon-shoujiqia1,.boxDown_left li:hover .icon-yijiuhuanxin,.boxDown_left li:hover .icon-huafeichongzhi{
@@ -1010,10 +1013,11 @@ main{
     width: 234px;
     height: 143px;
     background: #ffffff;
+    float: left;
 }
 .eight_up:hover,.eight_down:hover{
-    transform:translateY(-2px);
-    box-shadow:0 1px 20px 1px rgba(0,0,0,0.1)
+    transform:translateY(-1px);
+    box-shadow:0 2px 20px 2px rgba(0,0,0,0.1)
 }
 .eight_up_left{
     width: 117px;
@@ -1083,6 +1087,8 @@ main{
     height: 143px;
     background: #ffffff;
     margin-top: 0;
+    float: left;
+    margin-top: 14px;
 }
 /*家电结束*/
 /*配件开始*/
@@ -1993,7 +1999,7 @@ main{
     height: 175px;
     /*background: pink;*/
     position: fixed;
-    right: 119px;
+    right: 70px;
     bottom: 69px;
     z-index: 999;
 }
@@ -2005,7 +2011,7 @@ margin-top: 15px;
     height: 40px;
     line-height: 40px;
     text-align: center;
-    /*background: red;*/
+    background: #ffffff;
     border: 1px solid #f4f5f6;
 }
 
