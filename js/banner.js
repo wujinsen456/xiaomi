@@ -2,85 +2,126 @@
  * Created by 三木 on 2018/8/23.
  */
 window.onload=function () {
-    let bannerbox=document.getElementsByClassName("bannerbox")[0];
-    let banner=bannerbox.getElementsByClassName("banner")[0];
-    let bannerLi=banner.getElementsByTagName("li");
+    let bannerLi=document.querySelectorAll(".banner li");
     console.log(bannerLi);
+    let banner=document.getElementsByClassName("banner")[0];
+    let width=parseInt(getComputedStyle(banner,null).width);
+    console.log(width);
 
-    let dot=document.getElementsByClassName("dot")[0];
-    let dotLi=dot.getElementsByTagName("li");
+    let dotLi=document.querySelectorAll(".dot li");
     console.log(dotLi);
-
-    let btns=bannerbox.getElementsByClassName("btns")[0];
-    let btns1=bannerbox.getElementsByClassName("btns1")[0];
+    let btns=document.querySelector(".btns");
+    let btns1=document.querySelector(".btns1");
+    console.log(btns, btns1);
 
     //自动轮播
+    let flag=true;
     let now=next=0;
     let t=setInterval(move,2000);
-
-    function move() {
+    function move(){
         next++;
         if(next==bannerLi.length){
             next=0;
         }
-        bannerLi[next].style.left="1226px";
-        animate(bannerLi[now],{left:-1226});
-        animate(bannerLi[next],{left:0});
-        dotLi[now].className="";
-        dotLi[next].className="dotHot";
-        // now=next;
+        bannerLi[next].style.left=width+"px";
+        animate(bannerLi[now],{left:-width},function(){
+            flag=true;
+        });
+        animate(bannerLi[next],{left:0},function(){
+            flag=true;
+        });
+        dotLi[now].classList.remove("dotHot");
+        dotLi[next].classList.add("dotHot");
+        now=next;
     }
-    function move1() {
+    function moveL(){
         next--;
         if(next<0){
             next=bannerLi.length-1;
         }
-        bannerLi[next].style.left="-1226px";
-        animate(bannerLi[now],{left:1226});
-        animate(bannerLi[next],{left:0});
-        dotLi[now].className="";
-        dotLi[next].className="dotHot";
+        bannerLi[next].style.left=-width+"px";
+        animate(bannerLi[now],{left:width},function(){
+            flag=true;
+        });
+        animate(bannerLi[next],{left:0},function(){
+            flag=true;
+        });
+        dotLi[now].classList.remove("dotHot");
+        dotLi[next].classList.add("dotHot");
         now=next;
     }
-
-    //鼠标移入
+    // // 鼠标移入
     banner.onmouseenter=function(){
         clearInterval(t);
     };
     banner.onmouseleave=function(){
         t=setInterval(move,2000);
     };
-    //按钮点击
-    btns.onclick=function(){
-        clearInterval(t);
-        move();
-    };
+    // //按钮点击
     btns1.onclick=function(){
         clearInterval(t);
-        move1();
+        if(flag==false){
+            return;
+        }
+        if(next==bannerLi.length-1){
+            next=bannerLi.length-1;
+            return;
+        }
+        flag=false;
+        move();
+    };
+    btns.onclick=function(){
+        clearInterval(t);
+        if(flag==false){
+            return;
+        }
+        if(next==0){
+            return;
+        }
+        flag=false;
+        moveL();
     };
 
-    for (let i=0;i<dotLi.length;i++){
-        dotLi[i].onclick=function () {
+
+//////////////////////////小点点击 将要 现在 下一个/////////////////////////////////////////////
+
+
+    dotLi.forEach(function(v,i){                     //i 指要点击的对象  now 指当前点击的
+        dotLi[i].onclick=function(){
+            // clearInterval(t);
+            dotLi.forEach(function(v){
+                v.classList.remove("dotHot");
+            });
             if(now==i){
                 return;
             }else if(now<i){
-                bannerLi[i].style.left="1226px";
-                animate(bannerLi[now],{left:-1226});
-                animate(bannerLi[i],{left:0});
-                dotLi[now].className="";
-                dotLi[i].className="change";
+                bannerLi[i].style.left = width+"px";
+                animate(bannerLi[now], {left: -width},function(){
+                    flag=true;
+                });
+                animate(bannerLi[i], {left: 0},function(){
+                    flag=true;
+                });
+                // dotLi[now].classList.remove("dotHot");
+                // dotLi[i].classList.add("dotHot");
+                // next=now=i;
             }else{
-                bannerLi[i].style.left="-1226px";
-                animate(bannerLi[now],{left:1226});
-                animate(bannerLi[i],{left:0});
-                dotLi[now].className="";
-                dotLi[i].className="change";
+                bannerLi[i].style.left=-width+"px";
+                animate(bannerLi[now],{left:width},function(){
+                    flag=true;
+                });
+                animate(bannerLi[i],{left:0},function(){
+                    flag=true;
+                });
+                // dotLi[now].classList.remove("dotHot");
+                // dotLi[i].classList.add("dotHot");
+                // next=now=i;
             }
+            dotLi[i].classList.add("dotHot");
             next=now=i;
         }
+    })
 
-    }
 
 
 
