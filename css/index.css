@@ -4,20 +4,6 @@
     padding: 0;
     list-style: none;
 }
-/*.icon-shoujiqia{*/
-    /*font-size: 100px;*/
-    /*color: #ffac13;*/
-/*}*/
-
-/*.icon-shoujiqia{*/
-    /*font-size: 100px;*/
-    /*color: #fa6585;*/
-/*}*/
-
-/*.icon-liwuhuodong{*/
-    /*font-size: 100px;*/
-    /*color: red;*/
-/*}*/
 a{
     text-decoration: none;
 }
@@ -149,6 +135,12 @@ main{
 
 /*头部结束*/
 /*头下面的框开始*/
+.browse_{
+    width: 100%;
+    height: 100px;
+    position: relative;
+    z-index: 50;
+}
 .browse{
     width: 1226px;
     height: 100px;
@@ -175,7 +167,7 @@ main{
     font-size: 16px;
     color: #453a38;
     line-height: 94px;
-    margin-right: 20px;
+    padding-right: 20px;
     cursor: pointer;
 }
 .search{
@@ -219,6 +211,66 @@ main{
     background: #ff8200;
     color:#ffffff;
     cursor: pointer;
+}
+.main_se_pull{
+    width: 100%;
+    height:0;
+    background: #fff;
+    position: absolute;
+    top: 100px;
+    left:0;
+    overflow: hidden;
+    transition: all 1s;
+}
+.main_se_pull ul{
+    width: 1226px;
+    height: 248px;
+    background: #fff;
+    margin: 0 auto;
+    position: absolute;
+    top: 0;
+    left: 146.6px;
+    display: none;
+}
+.main_se_pull li{
+    width: 204px;
+    height: 248px;
+    box-sizing: border-box;
+    float: left;
+    background: #fff;
+}
+.se_pull_up{
+    width:66px;
+    height: 22px;
+    border: 1px solid #ff6700;
+    box-sizing: border-box;
+    color: #ff6700;
+    font-size: 12px;
+    text-align: center;
+    margin: 0 auto;
+}
+.se_pull_size{
+    width: 170px;
+    height: 120px;
+    padding: 15px 18px;
+    border-right: 2px solid #e0e0e0;
+}
+.se_pull_size1{
+    width: 170px;
+    height: 120px;
+    padding: 15px 18px;
+}
+.se_pull_center{
+    font-size: 13px;
+    line-height: 20px;
+    color: #333;
+    text-align: center;
+}
+.se_pull_down{
+    font-size: 13px;
+    line-height: 20px;
+    color: #ff6700;
+    text-align: center;
 }
 .input{
     width: 248px;
@@ -285,21 +337,22 @@ main{
 .aside{
     width: 234px;
     height: 460px;
-    background: #645b54;
+    background: rgba(0,0,0,0.6);
     position: absolute;
     top:0;
     left: 0;
+    z-index: 30;
 }
 .text{
     width: 234px;
     height: 460px;
-    background: #645b54;
+    /*background: #645b54;*/
     padding-left: 0;
     position: absolute;
     z-index: 30;
 }
 .asideBox{
-    width: 992px;
+    width:992px;
     height: 460px;
     position: absolute;
     top: 0;
@@ -309,45 +362,17 @@ main{
     z-index: 30;
     display: none;
 }
-.asideBox1{
-    width: 750px;
+
+.shu{
+    width: 248px;
     height: 460px;
-    position: absolute;
-    top: 0;
-    left: 234px;
-    background: #fff;
-    box-shadow: 3px 3px 10px 1px rgba(0,0,0,0.2);
-    z-index: 30;
-    display: none;
-}
-.asideBox2{
-    width: 550px;
-    height: 460px;
-    position: absolute;
-    top: 0;
-    left: 234px;
-    background: #fff;
-    box-shadow: 3px 3px 10px 1px rgba(0,0,0,0.2);
-    z-index: 30;
-    display: none;
-}
-.asideBox3{
-    width: 255px;
-    height: 460px;
-    position: absolute;
-    top: 0;
-    left: 234px;
-    background: #fff;
-    box-shadow: 3px 3px 10px 1px rgba(0,0,0,0.2);
-    z-index: 30;
-    display: none;
+    float: left;
 }
 .asBoxLi{
     width: 248px;
-    height: 56.6px;
+    height: 65px;
     margin: 10px auto;
     background: #fff;
-    float: left;
 }
 .asBoxLiSize{
     width: 40px;
@@ -748,9 +773,7 @@ main{
     width:978px;
     height: 339px;
     background: #ffffff;
-    /*padding-left: 0;*/
     float: left;
-    /*margin-left: 14px;*/
     cursor: pointer;
     position: absolute;
     top: 0;
