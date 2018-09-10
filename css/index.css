@@ -362,7 +362,15 @@ main{
     z-index: 30;
     display: none;
 }
-
+.asideBox1{
+    width:744px;
+}
+.asideBox2{
+    width:496px;
+}
+.asideBox3{
+    width:248px;
+}
 .shu{
     width: 248px;
     height: 460px;
