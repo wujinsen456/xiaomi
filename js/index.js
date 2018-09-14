@@ -147,105 +147,107 @@ window.onload=function(){
      * 4.左右箭头
      * 5.小点点击
      * */
-    let t=setInterval(move,1000);
-    let num=0;
-    let li=$(".banner li");
-    let dotLi=$(".dot li");
-    function move(type="next"){
-        li.css("z-index","5");
-        dotLi.removeClass("dotHot");
-        if(type=="next"){
-            num++;
-            if(num==li.length){
-                num=0;
+
+    //jQuery方法
+    // let t=setInterval(move,1000);
+    // let num=0;
+    // let li=$(".banner li");
+    // let dotLi=$(".dot li");
+    // function move(type="next"){
+    //     li.css("z-index","5");
+    //     dotLi.removeClass("dotHot");
+    //     if(type=="next"){
+    //         num++;
+    //         if(num==li.length){
+    //             num=0;
+    //         }
+    //     }else if(type=="prev"){
+    //         num--;
+    //         if(num<0){
+    //             num=li.length-1;
+    //         }
+    //     }
+    //     li.eq(num).css("z-index","10");
+    //     dotLi.eq(num).addClass("dotHot");
+    // }
+    // $(".banner").mouseenter(function(){
+    //     clearInterval(t);
+    // });
+    // $(".banner").mouseleave(function(){
+    //     t=setInterval(move,1000);
+    // });
+    // $(".btns").click(function(){
+    //     move(type="prev");
+    // });
+    // $(".btns1").click(function(){
+    //     move(type="next");
+    // });
+
+
+     let banner=document.getElementsByClassName("banner")[0];
+     let bannerLi=banner.getElementsByTagName("li");
+     let dot=document.getElementsByClassName("dot")[0];
+     let dotLi=dot.getElementsByTagName("li");
+     let btns=document.getElementsByClassName("btns")[0];
+     let btns1=document.getElementsByClassName("btns1")[0];
+
+     let t=setInterval(move,1000);
+     let num=0;
+     function move() {                             //如何轮播
+     num++;
+     if(num==bannerLi.length){
+     num=0;
+     }
+     for(let i=0;i<bannerLi.length;i++){
+     bannerLi[i].style.zIndex="5";
+     dotLi[i].className="";
+     }
+     bannerLi[num].style.zIndex="10";
+     dotLi[num].className="dotHot";
+     }
+
+     function move1() {
+     num--;
+     if(num<0){
+     num=bannerLi.length-1;
+     }
+     for(let i=0;i<bannerLi.length;i++){
+     bannerLi[i].style.zIndex="5";
+     dotLi[i].className="";
+     }
+     bannerLi[num].style.zIndex="10";
+     dotLi[num].className="dotHot";
+     }
+
+     banner.onmouseenter=function(){
+     clearInterval(t);
+     };
+     banner.onmouseleave=function(){
+     t=setInterval(move,1000);
+     };
+
+
+     btns.onclick=function () {
+     clearInterval(t);
+     move1();
+     };
+
+     btns1.onclick=function () {
+     clearInterval(t);
+     move();
+     };
+     for(let i=0;i<dotLi.length;i++){
+        dotLi[i].onclick=function () {                     //易错  要遍历
+            clearInterval(t);
+            for(let j=0;j<bannerLi.length;j++){
+                bannerLi[j].style.zIndex="5";
+                dotLi[j].className="";
             }
-        }else if(type=="prev"){
-            num--;
-            if(num<0){
-                num=li.length-1;
-            }
+        bannerLi[i].style.zIndex="10";
+        dotLi[i].className="dotHot";
+         num=i;
         }
-        li.eq(num).css("z-index","10");
-        dotLi.eq(num).addClass("dotHot");
-    }
-    $(".banner").mouseenter(function(){
-        clearInterval(t);
-    });
-    $(".banner").mouseleave(function(){
-        t=setInterval(move,1000);
-    });
-    $(".btns").click(function(){
-        move(type="prev");
-    });
-    $(".btns1").click(function(){
-        move(type="next");
-    });
-
-
-     // let banner=document.getElementsByClassName("banner")[0];
-     // let bannerLi=banner.getElementsByTagName("li");
-     // let dot=document.getElementsByClassName("dot")[0];
-     // let dotLi=dot.getElementsByTagName("li");
-     // let btns=document.getElementsByClassName("btns")[0];
-     // let btns1=document.getElementsByClassName("btns1")[0];
-     //
-     // let t=setInterval(move,1000);
-     // let num=0;
-     // function move() {                             //如何轮播
-     // num++;
-     // if(num==bannerLi.length){
-     // num=0;
-     // }
-     // for(let i=0;i<bannerLi.length;i++){
-     // bannerLi[i].style.zIndex="5";
-     // dotLi[i].className="";
-     // }
-     // bannerLi[num].style.zIndex="10";
-     // dotLi[num].className="dotHot";
-     // }
-     //
-     // function move1() {
-     // num--;
-     // if(num<0){
-     // num=bannerLi.length-1;
-     // }
-     // for(let i=0;i<bannerLi.length;i++){
-     // bannerLi[i].style.zIndex="5";
-     // dotLi[i].className="";
-     // }
-     // bannerLi[num].style.zIndex="10";
-     // dotLi[num].className="dotHot";
-     // }
-     //
-     // banner.onmouseenter=function(){
-     // clearInterval(t);
-     // };
-     // banner.onmouseleave=function(){
-     // t=setInterval(move,1000);
-     // };
-     //
-     //
-     // btns.onclick=function () {
-     // clearInterval(t);
-     // move1();
-     // };
-     //
-     // btns1.onclick=function () {
-     // clearInterval(t);
-     // move();
-     // };
-     // for(let i=0;i<dotLi.length;i++){
-     // dotLi[i].onclick=function () {                     //易错  要遍历
-     // clearInterval(t);
-     // for(let j=0;j<bannerLi.length;j++){
-     // bannerLi[j].style.zIndex="5";
-     // dotLi[j].className="";
-     // }
-     // bannerLi[i].style.zIndex="10";
-     // dotLi[i].className="dotHot";
-     // num=i;
-     // }
-     // }
+     }
 
 ////////////////////////////////////家电  选项卡///////////////////////////////
     /*let appliance=document.getElementsByClassName("appliance")[0];
@@ -371,18 +373,18 @@ window.onload=function(){
     Rec_enter(bottom_rightLi,headRight_right,headRight_left,Pho_width);
 
     ////////////////内容  轮播  左右移动///////////
- /*   let content_centerLi=document.querySelectorAll(".content_center");
-    let content_center=document.getElementsByClassName("content_center")[0];
-    let content_width=parseInt(getComputedStyle(content_center,null).width);
+    // let content_centerLi=document.querySelectorAll(".content_center");
+    // let content_center=document.getElementsByClassName("content_center")[0];
+    // let content_width=parseInt(getComputedStyle(content_center,null).width);
+    //
+    // let potLi=document.querySelectorAll(".pot1");
+    //
+    // let btns2=document.querySelector(".btns2");
+    // let btns2_2=document.querySelector(".btns2_2");
 
-    let potLi=document.querySelectorAll(".pot1");
 
-    let btns2=document.querySelector(".btns2");
-    let btns2_2=document.querySelector(".btns2_2");
-
-
-    let now=next=0;
-
+    // let now=next=0;
+/*
     btns2_2.onclick=function C_moveR(){
         next++;
         if(next==content_centerLi.length){
@@ -409,37 +411,37 @@ window.onload=function(){
         potLi[now].classList.remove("pot1Hot");
         potLi[next].classList.add("pot1Hot");
         now=next;
-    };
-    potLi.forEach(function(v,i){
-        v.onclick=function(){
-            potLi.forEach(function(v){
-                v.classList.remove("pot1Hot");
-            });
-            if(now==i){
-                return;
-            }else if(now<i){
-                next++;
-                if(next==content_centerLi.length){
-                    next=content_centerLi.length-1;
-                    return;
-                }
-                content_centerLi[next].style.left=content_width+"px";
-                animate(content_centerLi[now],{left:-content_width});
-                animate(content_centerLi[i],{left:0});
-            }else{
-                next--;
-                if(next<0){
-                    next=0;
-                    return;
-                }
-                content_centerLi[next].style.left=-content_width+"px";
-                animate(content_centerLi[now],{left:content_width});
-                animate(content_centerLi[i],{left:0});
-            }
-            potLi[i].classList.add("pot1Hot");
-            next=now=i;
-        }
-    });*/
+    };*/
+    // potLi.forEach(function(v,i){
+    //     v.onclick=function(){
+    //         potLi.forEach(function(v){
+    //             v.classList.remove("pot1Hot");
+    //         });
+    //         if(now==i){
+    //             return;
+    //         }else if(now<i){
+    //             next++;
+    //             if(next==content_centerLi.length){
+    //                 next=content_centerLi.length-1;
+    //                 return;
+    //             }
+    //             content_centerLi[next].style.left=content_width+"px";
+    //             animate(content_centerLi[now],{left:-content_width});
+    //             animate(content_centerLi[i],{left:0});
+    //         }else{
+    //             next--;
+    //             if(next<0){
+    //                 next=0;
+    //                 return;
+    //             }
+    //             content_centerLi[next].style.left=-content_width+"px";
+    //             animate(content_centerLi[now],{left:content_width});
+    //             animate(content_centerLi[i],{left:0});
+    //         }
+    //         potLi[i].classList.add("pot1Hot");
+    //         next=now=i;
+    //     }
+    // });
 
     ///////////////////// 封装 内容 函数/////////////////////////////////////
     function content_enter(centerNumLi,potNumLi,btnsNum,btnsNum_2){
