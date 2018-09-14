@@ -361,14 +361,14 @@ window.onload=function(){
 
 
     //////////////////小米闪购/////////////////////
-    // let bottom_rightLi=document.querySelectorAll(".bottom_right");
-    // let bottom_right=document.getElementsByClassName("bottom_right")[0];
-    // let Pho_width=parseInt(getComputedStyle(bottom_right,null).width);
-    //
-    //
-    // let headRight_right=document.querySelector(".headRight_right");
-    // let headRight_left=document.querySelector(".headRight_left");
-    // Rec_enter(bottom_rightLi,headRight_right,headRight_left,Pho_width);
+    let bottom_rightLi=document.querySelectorAll(".bottom_right");
+    let bottom_right=document.getElementsByClassName("bottom_right")[0];
+    let Pho_width=parseInt(getComputedStyle(bottom_right,null).width);
+
+
+    let headRight_right=document.querySelector(".headRight_right");
+    let headRight_left=document.querySelector(".headRight_left");
+    Rec_enter(bottom_rightLi,headRight_right,headRight_left,Pho_width);
 
     ////////////////内容  轮播  左右移动///////////
  /*   let content_centerLi=document.querySelectorAll(".content_center");
