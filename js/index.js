@@ -4,7 +4,21 @@
 window.onload=function(){
 
     //////////////////////////////////购物车下拉 选项卡///////////////////////////////////////
-    let right_right=document.getElementsByClassName("right_right");
+
+    $(".right_right").mouseenter(function(){
+        $(".shophide").css("height","100px").css("z-index","500");
+        $(this).css("background","#fff");
+        $(".shopping").css("color","#fd6a02");
+        $(".icon-xiazai1").css("color","#fd6a02");
+    });
+    $(".right_right").mouseleave(function(){
+        $(".shophide").css("height","0");
+        $(this).css("background","");
+        $(".shopping").css("color","");
+        $(".icon-xiazai1").css("color","");
+    });
+
+    /*let right_right=document.getElementsByClassName("right_right");
     let shophide=document.getElementsByClassName("shophide");
     right_right[0].onmouseenter=function(){
         shophide[0].style.height="100px";
@@ -15,11 +29,12 @@ window.onload=function(){
         shophide[0].style.height=0;
         shophide[0].style.boxShadow="none";
 
-    };
+    };*/
 
 
     //////////////////nav 隐藏////////////////////////
     $(".nav li").mouseenter(function(){
+        $(".main_se_pull").css("boxShadow","none");
         $(".main_se_pull ul").eq($(this).index()).css("display","block");
         $(".main_se_pull").css("height","248px");
         $(".main_se_pull").css("boxShadow","0 5px 8px 1px rgba(0,0,0,0.15)");
@@ -28,17 +43,17 @@ window.onload=function(){
     $(".nav li").mouseleave(function(){
         $(".main_se_pull ul").eq($(this).index()).css("display","none");
         $(".main_se_pull").css("height","0");
-        $(".main_se_pull").css("boxShadow","0");
+        $(".main_se_pull").css("boxShadow","none");
         $(".main_se_pull").css("borderTop","0");
     });
     $(".nav li:nth-child(9)").mouseenter(function(){
         $(".main_se_pull").css("height","0");
-        $(".main_se_pull").css("boxShadow","0");
+        $(".main_se_pull").css("boxShadow","none");
         $(".main_se_pull").css("borderTop","0");
     });
     $(".nav li:nth-child(10)").mouseenter(function(){
         $(".main_se_pull").css("height","0");
-        $(".main_se_pull").css("boxShadow","0");
+        $(".main_se_pull").css("boxShadow","none");
         $(".main_se_pull").css("borderTop","0");
     });
 
@@ -166,71 +181,71 @@ window.onload=function(){
         move(type="next");
     });
 
-    /*
-     let banner=document.getElementsByClassName("banner")[0];
-     let bannerLi=banner.getElementsByTagName("li");
-     let dot=document.getElementsByClassName("dot")[0];
-     let dotLi=dot.getElementsByTagName("li");
-     let btns=document.getElementsByClassName("btns")[0];
-     let btns1=document.getElementsByClassName("btns1")[0];
 
-     let t=setInterval(move,1000);
-     let num=0;
-     function move() {                             //如何轮播
-     num++;
-     if(num==bannerLi.length){
-     num=0;
-     }
-     for(let i=0;i<bannerLi.length;i++){
-     bannerLi[i].style.zIndex="5";
-     dotLi[i].className="";
-     }
-     bannerLi[num].style.zIndex="10";
-     dotLi[num].className="dotHot";
-     }
-
-     function move1() {
-     num--;
-     if(num<0){
-     num=bannerLi.length-1;
-     }
-     for(let i=0;i<bannerLi.length;i++){
-     bannerLi[i].style.zIndex="5";
-     dotLi[i].className="";
-     }
-     bannerLi[num].style.zIndex="10";
-     dotLi[num].className="dotHot";
-     }
-
-     banner.onmouseenter=function(){
-     clearInterval(t);
-     };
-     banner.onmouseleave=function(){
-     t=setInterval(move,1000);
-     };
-
-
-     btns.onclick=function () {
-     clearInterval(t);
-     move1();
-     };
-
-     btns1.onclick=function () {
-     clearInterval(t);
-     move();
-     };
-     for(let i=0;i<dotLi.length;i++){
-     dotLi[i].onclick=function () {                     //易错  要遍历
-     clearInterval(t);
-     for(let j=0;j<bannerLi.length;j++){
-     bannerLi[j].style.zIndex="5";
-     dotLi[j].className="";
-     }
-     bannerLi[i].style.zIndex="10";
-     dotLi[i].className="dotHot";
-     num=i;
-     }
-     }*/
+     // let banner=document.getElementsByClassName("banner")[0];
+     // let bannerLi=banner.getElementsByTagName("li");
+     // let dot=document.getElementsByClassName("dot")[0];
+     // let dotLi=dot.getElementsByTagName("li");
+     // let btns=document.getElementsByClassName("btns")[0];
+     // let btns1=document.getElementsByClassName("btns1")[0];
+     //
+     // let t=setInterval(move,1000);
+     // let num=0;
+     // function move() {                             //如何轮播
+     // num++;
+     // if(num==bannerLi.length){
+     // num=0;
+     // }
+     // for(let i=0;i<bannerLi.length;i++){
+     // bannerLi[i].style.zIndex="5";
+     // dotLi[i].className="";
+     // }
+     // bannerLi[num].style.zIndex="10";
+     // dotLi[num].className="dotHot";
+     // }
+     //
+     // function move1() {
+     // num--;
+     // if(num<0){
+     // num=bannerLi.length-1;
+     // }
+     // for(let i=0;i<bannerLi.length;i++){
+     // bannerLi[i].style.zIndex="5";
+     // dotLi[i].className="";
+     // }
+     // bannerLi[num].style.zIndex="10";
+     // dotLi[num].className="dotHot";
+     // }
+     //
+     // banner.onmouseenter=function(){
+     // clearInterval(t);
+     // };
+     // banner.onmouseleave=function(){
+     // t=setInterval(move,1000);
+     // };
+     //
+     //
+     // btns.onclick=function () {
+     // clearInterval(t);
+     // move1();
+     // };
+     //
+     // btns1.onclick=function () {
+     // clearInterval(t);
+     // move();
+     // };
+     // for(let i=0;i<dotLi.length;i++){
+     // dotLi[i].onclick=function () {                     //易错  要遍历
+     // clearInterval(t);
+     // for(let j=0;j<bannerLi.length;j++){
+     // bannerLi[j].style.zIndex="5";
+     // dotLi[j].className="";
+     // }
+     // bannerLi[i].style.zIndex="10";
+     // dotLi[i].className="dotHot";
+     // num=i;
+     // }
+     // }
 
 ////////////////////////////////////家电  选项卡///////////////////////////////
     /*let appliance=document.getElementsByClassName("appliance")[0];
@@ -285,18 +300,19 @@ window.onload=function(){
     function Rec_enter(recNum,heRi_riNum,heRi_leNum,R_width) {
 
     let flag=true;
-    let now=next=0;
+    let now=0;
+        next=0;
 
         heRi_riNum.onclick=function Rec_moveR(){
             next++;
-            // if(flag==false){
-            //     return;
-            // }
+            if(flag==false){
+                return;
+            }
             if(next==heRi_riNum.length){
                 next=heRi_riNum.length-1;
                 return;
             }
-            // flag=false;
+            flag=false;
             recNum[next].style.left=R_width+"px";
             animate(recNum[now],{left:-R_width},function(){
                 flag=true;
@@ -340,15 +356,19 @@ window.onload=function(){
     let headRight_left1=document.querySelector(".headRight_left1");
     Rec_enter(recommend_bottom,headRight_right1,headRight_left1,Rec_width);
 
+
+
+
+
     //////////////////小米闪购/////////////////////
-    let bottom_rightLi=document.querySelectorAll(".bottom_right");
-    let bottom_right=document.getElementsByClassName("bottom_right")[0];
-    let Pho_width=parseInt(getComputedStyle(bottom_right,null).width);
-
-
-    let headRight_right=document.querySelector(".headRight_right");
-    let headRight_left=document.querySelector(".headRight_left");
-    Rec_enter(bottom_rightLi,headRight_right,headRight_left,Pho_width);
+    // let bottom_rightLi=document.querySelectorAll(".bottom_right");
+    // let bottom_right=document.getElementsByClassName("bottom_right")[0];
+    // let Pho_width=parseInt(getComputedStyle(bottom_right,null).width);
+    //
+    //
+    // let headRight_right=document.querySelector(".headRight_right");
+    // let headRight_left=document.querySelector(".headRight_left");
+    // Rec_enter(bottom_rightLi,headRight_right,headRight_left,Pho_width);
 
     ////////////////内容  轮播  左右移动///////////
  /*   let content_centerLi=document.querySelectorAll(".content_center");

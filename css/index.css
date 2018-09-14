@@ -96,7 +96,6 @@ main{
     width: 331px;
     height: 0;
     background: #ffffff;
-    /*background: red;*/
     position: absolute;
     right: 0;
     top:40px;
@@ -104,21 +103,22 @@ main{
     color: black;
     text-align: center;
     line-height: 100px;
+    box-shadow:0 5px 10px 1px rgba(0,0,0,0.15);
     overflow: hidden;
-
+    /*display: none;*/
     transition:all 0.3s;
-    z-index: 20;
+    z-index: 100;
 }
 
-.right_right:hover{
-    background: #ffffff;
-}
-.right_right:hover span{
-    color: #fd6a02;
-}
-.right_right:hover .icon-xiazai1{
-    color: #fd6a02;
-}
+/*.right_right:hover{*/
+    /*background: #ffffff;*/
+/*}*/
+/*.right_right:hover span{*/
+    /*color: #fd6a02;*/
+/*}*/
+/*.right_right:hover .icon-xiazai1{*/
+    /*color: #fd6a02;*/
+/*}*/
 .icon-xiazai1{
     font-size: 20px;
     color: #b2b2b2;
@@ -131,6 +131,7 @@ main{
     font-size: 13px;
     color: #b3b3b3;
     line-height: 38px;
+
 }
 
 /*头部结束*/
